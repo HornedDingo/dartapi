@@ -1,0 +1,6 @@
+database:
+  username: "root"
+  password: "root"
+  host: "pg_db"
+  port: 5432
+  databaseName: "template_base"

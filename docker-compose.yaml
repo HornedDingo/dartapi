@@ -1,0 +1,32 @@
+version: '3.1'
+
+services:
+  site:
+    build: .
+    container_name: site
+    ports: 
+      - "8888:8888"
+
+  pg_db:
+    image: postgres:13.4
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=template_base
+    volumes:
+      - db_pg_dart:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    container_name: pg_db
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8000:8080"
+    container_name: adminer
+
+
+volumes:
+  db_pg_dart:
